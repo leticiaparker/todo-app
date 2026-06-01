@@ -1,6 +1,6 @@
 describe('Frontend — Lista de Tarefas', () => {
   beforeEach(() => {
-    cy.visit('frontend/index.html');
+    cy.visit('/');
   });
 
   it('exibe o título "Lista de Tarefas"', () => {
