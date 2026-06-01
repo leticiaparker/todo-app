@@ -9,4 +9,4 @@ Cypress.Commands.add('addTaskViaAPI', (title) => {
   cy.request('POST', 'http://localhost:3001/api/tasks', { title })
     .its('body')
     .should('have.property', 'id');
-});
+}); 
