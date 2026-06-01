@@ -9,38 +9,18 @@ on:
 jobs:
   test-backend:
     runs-on: ubuntu-latest
-    name: Cypress Backend API
-
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: "npm"
-
-      - name: Install root dependencies (Cypress)
+      - name: Install root dependencies
         run: npm install
-
       - name: Install backend dependencies
         run: cd backend && npm install
-
-      - name: Start backend server
+      - name: Start backend
         run: cd backend && node server.js &
-        env:
-          PORT: 3001
-
       - name: Wait for backend
         run: npx wait-on http://localhost:3001/api/tasks --timeout 15000
-
-      - name: Run backend Cypress tests (API)
-        run: npx cypress run --spec "cypress/e2e/backend.cy.js"
-
-      - name: Upload screenshots on failure
-        uses: actions/upload-artifact@v4
-        if: failure()
-        with:
-          name: cypress-screenshots-backend
-          path: cypress/screenshots
+      - name: Run backend Cypress tests
+        run: npx cypress run --spec "cypress/e2e/backend.cy.js" --config "baseUrl="

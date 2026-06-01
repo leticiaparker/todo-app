@@ -3,6 +3,8 @@
 
 const API = 'http://localhost:3001/api';
 
+// @ts-nocheck
+
 describe('Backend API — /api/tasks', () => {
   beforeEach(() => {
     cy.request('POST', `${API}/reset`);
