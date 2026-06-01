@@ -1,14 +1,15 @@
 {
   "name": "todo-app",
   "version": "1.0.0",
-  "description": "Todo App with Express backend and HTML/CSS/JS frontend",
+  "description": "Todo App com testes Cypress",
   "scripts": {
     "start:backend": "cd backend && node server.js",
-    "install:backend": "cd backend && npm install",
     "test:e2e": "npx cypress run",
     "test:e2e:open": "npx cypress open"
   },
   "devDependencies": {
-    "cypress": "^13.6.0"
+    "cypress": "^13.6.0",
+    "serve": "^14.2.0",
+    "wait-on": "^7.2.0"
   }
 }
