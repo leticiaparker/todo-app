@@ -1,10 +1,10 @@
-# ✅ Lista de Tarefas — Full Stack com Testes Cypress
+Lista de Tarefas — Full Stack com Testes Cypress
 
 Aplicação de Lista de Tarefas com **frontend HTML/CSS/JS** e **backend Node.js + Express**, com testes automatizados usando **Cypress** e workflows de **GitHub Actions**.
 
 ---
 
-## 📁 Estrutura do Projeto
+Estrutura do Projeto
 
 ```
 todo-app/
@@ -29,23 +29,23 @@ todo-app/
 
 ---
 
-## ✨ Funcionalidades
+Funcionalidades
 
 | Funcionalidade | Descrição |
 |---|---|
-| ➕ Adicionar tarefa | Campo de texto + botão ou Enter |
-| ✅ Concluir tarefa | Clique no círculo — aplica risco no título |
-| 🕐 Horário de conclusão | Exibido abaixo do título ao ser concluída |
-| 📋 Ordenação automática | Tarefas concluídas vão para o final da lista |
-| 🗑️ Excluir com confirmação | Ícone de lixeira + modal "Tem certeza?" |
-| 🔍 Filtros | Abas: Todas / Ativas / Concluídas |
-| 🧹 Limpar concluídas | Remove todas as tarefas concluídas de uma vez |
+Adicionar tarefa | Campo de texto + botão ou Enter |
+Concluir tarefa | Clique no círculo — aplica risco no título |
+Horário de conclusão | Exibido abaixo do título ao ser concluída |
+Ordenação automática | Tarefas concluídas vão para o final da lista |
+Excluir com confirmação | Ícone de lixeira + modal "Tem certeza?" |
+Filtros | Abas: Todas / Ativas / Concluídas |
+Limpar concluídas | Remove todas as tarefas concluídas de uma vez |
 
 ---
 
-## 🚀 Como Executar Localmente
+Como Executar Localmente
 
-### 1. Instalar dependências
+1. Instalar dependências
 
 ```bash
 # Na raiz (Cypress)
@@ -55,7 +55,7 @@ npm install
 cd backend && npm install
 ```
 
-### 2. Iniciar o backend
+2. Iniciar o backend
 
 ```bash
 cd backend
@@ -63,7 +63,7 @@ node server.js
 # Rodando em http://localhost:3001
 ```
 
-### 3. Servir o frontend
+3. Servir o frontend
 
 ```bash
 # Na raiz do projeto
@@ -71,7 +71,7 @@ npx serve frontend -l 8080
 # Acesse http://localhost:8080
 ```
 
-### 4. Executar os testes
+4. Executar os testes
 
 ```bash
 # Todos os testes (headless)
@@ -89,7 +89,7 @@ npx cypress run --spec "cypress/e2e/backend.cy.js"
 
 ---
 
-## 🔌 API Endpoints
+API Endpoints
 
 | Método | Rota | Descrição |
 |--------|------|-----------|
@@ -101,7 +101,7 @@ npx cypress run --spec "cypress/e2e/backend.cy.js"
 | `DELETE` | `/api/tasks` | Deletar todas as concluídas |
 | `POST` | `/api/reset` | Resetar dados (usado nos testes) |
 
-### Exemplo de tarefa
+Exemplo de tarefa
 
 ```json
 {
@@ -115,7 +115,7 @@ npx cypress run --spec "cypress/e2e/backend.cy.js"
 
 ---
 
-## 🧪 Cobertura de Testes
+ Cobertura de Testes
 
 ### Frontend (`frontend.cy.js`) — 25 testes
 - Título e subtítulo centralizados visíveis
@@ -138,7 +138,7 @@ npx cypress run --spec "cypress/e2e/backend.cy.js"
 - Destaque visual na aba ativa
 - Limpar concluídas
 
-### Backend (`backend.cy.js`) — 22 testes
+ Backend (`backend.cy.js`) — 22 testes
 - `GET /api/tasks` — listagem vazia e com itens
 - `POST /api/tasks` — campos, validações, trim, IDs incrementais
 - `GET /api/tasks/:id` — busca e 404
@@ -149,7 +149,7 @@ npx cypress run --spec "cypress/e2e/backend.cy.js"
 
 ---
 
-## ⚙️ GitHub Actions
+ GitHub Actions
 
 Dois workflows disparados em cada **push** ou **pull request**:
 
