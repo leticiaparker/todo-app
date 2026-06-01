@@ -23,6 +23,4 @@ jobs:
       - name: Wait for backend
         run: npx wait-on http://localhost:3001/api/tasks --timeout 15000
       - name: Run backend Cypress tests
-        run: npx cypress run --spec "cypress/e2e/backend.cy.js"
-        env:
-          CYPRESS_BASE_URL: http://localhost:3001/e2e/backend.cy.js" --config "baseUrl="
+        run: npx cypress run --spec "cypress/e2e/backend.cy.js" --config baseUrl=http://localhost:3001
