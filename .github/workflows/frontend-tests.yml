@@ -16,5 +16,11 @@ jobs:
           node-version: 20
       - name: Install dependencies
         run: npm install
+      - name: Serve frontend
+        run: npx serve frontend -l 8080 &
+      - name: Wait for frontend
+        run: npx wait-on http://localhost:8080 --timeout 15000
       - name: Run frontend Cypress tests
-        run: npx cypress run --spec "cypress/e2e/frontend.cy.js" --config "baseUrl=,specPattern=cypress/e2e/frontend.cy.js"
+        run: npx cypress run --spec "cypress/e2e/frontend.cy.js"
+        env:
+          CYPRESS_BASE_URL: http://localhost:8080
