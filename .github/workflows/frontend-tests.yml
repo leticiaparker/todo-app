@@ -1,0 +1,52 @@
+name: Frontend E2E Tests
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+    branches: ["**"]
+
+jobs:
+  test-frontend:
+    runs-on: ubuntu-latest
+    name: Cypress Frontend E2E
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+
+      - name: Install root dependencies (Cypress)
+        run: npm install
+
+      - name: Install backend dependencies
+        run: cd backend && npm install
+
+      - name: Start backend server
+        run: cd backend && node server.js &
+        env:
+          PORT: 3001
+
+      - name: Wait for backend
+        run: npx wait-on http://localhost:3001/api/tasks --timeout 15000
+
+      - name: Serve frontend
+        run: npx serve frontend -l 8080 &
+
+      - name: Wait for frontend
+        run: npx wait-on http://localhost:8080 --timeout 15000
+
+      - name: Run frontend Cypress tests
+        run: npx cypress run --spec "cypress/e2e/frontend.cy.js"
+
+      - name: Upload screenshots on failure
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: cypress-screenshots-frontend
+          path: cypress/screenshots
